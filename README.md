@@ -1,5 +1,5 @@
 # Reactive Microservices Api with docker
-## Sample Microservices application build Spring Framework 5.0, Spring-Boot 2.0, Netty-Server, MongoDB with docker.
+## Microservices application build Spring Framework 5.0, Spring-Boot 2.0, Netty-Server, MongoDB with Docker.
 
 - Spring-Boot 2.0
 - Spring 5.0
@@ -10,10 +10,17 @@
 
 # Instructions
 
+Install Docker
+https://docs.docker.com/engine/installation/
+
 Mongo
 <pre>
 docker pull mongo
 docker run -p 27017:27017 mongo:latest
+
+* NECESSARY *
+Connect MongoDB instance and create database "test"
+
 </pre>
 
 Application
