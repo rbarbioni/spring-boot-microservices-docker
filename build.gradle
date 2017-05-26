@@ -1,0 +1,66 @@
+def springBootVersion = '2.0.0.BUILD-SNAPSHOT'
+
+buildscript {
+
+    repositories {
+        repositories {
+            maven { url 'https://repo.spring.io/libs-snapshot' }
+        }
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT")
+        classpath ('io.spring.gradle:dependency-management-plugin:1.0.2.RELEASE')
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
+apply plugin: 'java'
+apply plugin: "application"
+apply plugin: 'org.springframework.boot'
+apply plugin: 'docker'
+
+version = "1.0.0-SNAPSHOT"
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    mainClassName       = "br.com.rbarbioni.docker.Application"
+}
+
+jar {
+    baseName = "spring-boot-microservices-docker"
+    group    = "br.com.rbarbioni.docker"
+    manifest { attributes "Main-Class": "br.com.rbarbioni.docker.Application" }
+}
+
+task buildDocker(type: Docker, dependsOn: build) {
+    push = true
+    applicationName = jar.baseName
+    dockerfile = file('src/main/docker/Dockerfile')
+    doFirst {
+        copy {
+            from jar
+            into stageDir
+        }
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+    maven { url "http://repo.spring.io/release" }
+    maven { url "http://repo.spring.io/milestone" }
+    maven { url "http://repo.spring.io/snapshot" }
+}
+
+dependencies {
+    runtime("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:${springBootVersion}")
+    compile group: 'io.projectreactor.ipc', name: 'reactor-netty', version: '0.6.3.RELEASE'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.4'
+}
