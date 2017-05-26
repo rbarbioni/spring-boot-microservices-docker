@@ -1,4 +1,4 @@
-# Reactive Microservices with docker
+# Reactive Microservices Api with docker
 ## Sample Microservices application build Spring Framework 5.0, Spring-Boot 2.0, Netty-Server, MongoDB with docker.
 
 - Spring-Boot 2.0
@@ -10,6 +10,13 @@
 
 # Instructions
 
+Mongo
+<pre>
+docker pull mongo
+docker run -p 27017:27017 mongo:latest
+</pre>
+
+Application
 <pre>
 Clone repo https://github.com/rbarbioni/spring-boot-microservices-docker.git
 cd spring-boot-microservices-docker
