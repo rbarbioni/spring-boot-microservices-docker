@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.*;
 import java.io.Serializable;
 
 /**
@@ -19,8 +20,12 @@ public class User implements Serializable{
     @Id
     private String id;
 
+    @NotNull
+    @NotEmpty
     private String name;
 
+    @NotEmpty
+    @Email
     private String email;
 
     protected User (){}
@@ -43,5 +48,4 @@ public class User implements Serializable{
     public String getEmail() {
         return email;
     }
-
 }

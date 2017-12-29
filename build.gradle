@@ -1,4 +1,4 @@
-def springBootVersion = '2.0.0.M2'
+def springBootVersion = '2.0.0.M7'
 
 buildscript {
 
@@ -8,8 +8,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M2")
-        classpath ('io.spring.gradle:dependency-management-plugin:1.0.3.RELEASE')
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.0.M7")
+        classpath ('io.spring.gradle:dependency-management-plugin:1.0.4.RELEASE')
         classpath('se.transmode.gradle:gradle-docker:1.2')
     }
 }
@@ -58,8 +58,10 @@ dependencies {
     runtime("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:${springBootVersion}")
+    compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.0")
+    compile("cz.jirutka.spring:embedmongo-spring:RELEASE")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.4'
+    gradleVersion = '4.3'
 }
