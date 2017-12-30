@@ -30,3 +30,4 @@ cd spring-boot-microservices-docker
 ./gradlew build buildDocker
 docker run -p 8080:8080 -t spring-boot-microservices-docker:1.0.0-SNAPSHOT
 </pre>
+-p
