@@ -58,8 +58,6 @@ dependencies {
     runtime("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-webflux:${springBootVersion}")
     compile("org.springframework.boot:spring-boot-starter-data-mongodb-reactive:${springBootVersion}")
-    compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo:2.0.0")
-    compile("cz.jirutka.spring:embedmongo-spring:RELEASE")
 }
 
 task wrapper(type: Wrapper) {

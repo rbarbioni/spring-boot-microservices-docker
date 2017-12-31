@@ -30,9 +30,8 @@ public class User implements Serializable{
 
     protected User (){}
 
-    public User(String id, String name, String email) {
+    public User(String name, String email) {
         this();
-        this.id = id;
         this.name = name;
         this.email = email;
     }
